@@ -12,7 +12,6 @@ parameters:
   type: bool
   default: false
 
-${{ parameters.image }}
 
 jobs:
   - job: 'terraformExecution'
