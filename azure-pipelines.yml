@@ -5,6 +5,15 @@
 
 trigger:
 - main
+
+parameters:
+- name: apply
+  displayName: "Terraform Apply"
+  type: bool
+  default: false
+
+${{ parameters.image }}
+
 jobs:
   - job: 'terraformExecution'
     pool:
@@ -22,6 +31,4 @@ jobs:
     - bash: |
         terraform apply
       displayName: Terraform Apply
-
-
   
