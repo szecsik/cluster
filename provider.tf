@@ -7,6 +7,7 @@ terraform {
     container_name       = "tfstate"               
     key                  = "szecsikr-cluster.terraform.tfstate"
     subscription_id = "5610ba8d-b1da-49de-87f9-b014a6efe236"
+    use_msi = true
   }
 
   required_providers {
