@@ -1,5 +1,14 @@
 terraform {
 
+
+ backend "azurerm" {
+    resource_group_name  = "szecsikr" 
+    storage_account_name = "szecsikr"                
+    container_name       = "tfstate"               
+    key                  = "szecsikr-cluster.terraform.tfstate"
+    subscription_id = "5610ba8d-b1da-49de-87f9-b014a6efe236"
+  }
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -14,16 +23,4 @@ provider "azurerm" {
   features {}
   subscription_id = "5610ba8d-b1da-49de-87f9-b014a6efe236"
   use_msi = true
-}
-
-terraform {
-
- backend "azurerm" {
-    resource_group_name  = "szecsikr" 
-    storage_account_name = "szecsikr"                
-    container_name       = "tfstate"               
-    key                  = "szecsikr-cluster.terraform.tfstate"
-    subscription_id = "5610ba8d-b1da-49de-87f9-b014a6efe236"
-  }
-  
 }
