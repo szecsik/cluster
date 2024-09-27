@@ -6,7 +6,7 @@
 trigger:
 - main
 jobs:
-  - job: 'Terraform Execution'
+  - job: 'terraformExecution'
     pool:
       name: szecsikr
     steps:
