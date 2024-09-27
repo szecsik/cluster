@@ -10,12 +10,15 @@ jobs:
     pool:
       name: szecsikr
     steps:
-    - displayName: 'Terraform init'
-      script: |
+    - task: HashiCorpTerraformInstaller@0  # Task to install Terraform (if not available)
+      inputs:
+        terraformVersion: 'latest'  # Specify version if needed
+    - script: |
         terraform init
-    - displayName: Validate Terraform
-      script: |
+      displayName: 'Terraform init'
+    - script: |
         terraform validate
-    - displayName: Plan
-      script: |
+      displayName: 'Validate Terraform'
+    - script: |
         terraform plan
+      displayName: 'Terraform Plan'
