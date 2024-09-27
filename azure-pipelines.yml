@@ -13,3 +13,9 @@ jobs:
     - bash: |
         terraform init
       displayName: Terraform Init
+    - bash: |
+        terraform validate
+      displayName: Terraform Validate
+    - bash: |
+        terraform plan
+      displayName: Terraform Plan
