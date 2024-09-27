@@ -11,6 +11,7 @@ jobs:
       name: szecsikr
     steps:
     - bash: |
+        export ARM_MSI_ENDPOINT=true
         terraform init
       displayName: Terraform Init
     - bash: |
