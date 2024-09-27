@@ -19,3 +19,6 @@ jobs:
     - bash: |
         terraform plan
       displayName: Terraform Plan
+    - bash: |
+        terraform apply
+      displayName: Terraform Apply

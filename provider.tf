@@ -1,11 +1,23 @@
 terraform {
+
+ backend "azurerm" {
+    resource_group_name  = "szecsikr" 
+    storage_account_name = "szecsikr"                
+    container_name       = "tfstate"               
+    key                  = "szecsikr-cluster.terraform.tfstate"
+  }
+  
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
       version = "~> 4.0"
     }
   }
+
 }
+
+
+
 
 
 provider "azurerm" {
