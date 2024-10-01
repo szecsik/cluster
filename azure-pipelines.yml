@@ -6,17 +6,31 @@
 trigger:
 - main
 
-jobs:
-  - job: 'terraformExecution'
-    pool:
-      name: szecsikr
-    steps:
-    - bash: |
-        terraform init
-      displayName: Terraform Init
-    - bash: |
-        terraform validate
-      displayName: Terraform Validate
-    - bash: |
-        terraform plan
-      displayName: Terraform Plan
+stages:
+- stage: "Terraform Plan"
+  jobs:
+    - job: 'terraformExecution'
+      pool:
+        name: szecsikr
+      steps:
+      - bash: |
+          terraform init
+        displayName: Terraform Init
+      - bash: |
+          terraform validate
+        displayName: Terraform Validate
+      - bash: |
+          terraform plan
+        displayName: Terraform Plan
+- stage: "Terraform Apply"
+  jobs:
+    - job: 'terraformExecution'
+      pool:
+        name: szecsikr
+      steps:
+      - bash: |
+          terraform init
+        displayName: Terraform Init
+      - bash: |
+          terraform plan
+        displayName: Terraform Plan
