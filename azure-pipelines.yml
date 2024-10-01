@@ -7,7 +7,7 @@ trigger:
 - main
 
 stages:
-- stage: "Terraform Plan"
+- stage: "TerraformPlan"
   displayName: plan
   jobs:
     - job: 'terraformExecution'
@@ -23,7 +23,7 @@ stages:
       - bash: |
           terraform plan
         displayName: Terraform Plan
-- stage: "Terraform Apply"
+- stage: "TerraformApply"
   dependsOn: plan
   jobs:
     - job: 'terraformExecution'
