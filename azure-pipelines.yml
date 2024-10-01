@@ -48,19 +48,18 @@ stages:
       - bash: |
           terraform apply -auto-approve
         displayName: Terraform Apply
-  - stage: "TerraformDestroy"
-    displayName: Terraform Destroy
-    dependsOn: TerraformPlan
-    condition: and(succeeded(), eq('${{ parameters.runTerraformDestroy }}', true))
-    jobs:
-      - job: 'terraformExecution'
-        pool:
-          name: szecsikr
-        steps:
-        - bash: |
-            terraform init
-          displayName: Terraform Init
-        - bash: |
-            terraform destroy -auto-approve
-          displayName: Terraform Destroy
-
+- stage: "TerraformDestroy"
+  displayName: Terraform Destroy
+  dependsOn: TerraformPlan
+  condition: and(succeeded(), eq('${{ parameters.runTerraformDestroy }}', true))
+  jobs:
+    - job: 'terraformExecution'
+      pool:
+        name: szecsikr
+      steps:
+      - bash: |
+          terraform init
+        displayName: Terraform Init
+      - bash: |
+          terraform destroy -auto-approve
+        displayName: Terraform Destroy
