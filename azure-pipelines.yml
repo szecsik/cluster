@@ -32,7 +32,7 @@ stages:
 - stage: "TerraformApply"
   displayName: Terraform Apply
   dependsOn: TerraformPlan
-  condition: and(succeeded(), eq(variables['parameters.runTerraformApply'], 'true'))
+  condition: and(succeeded(), eq('parameters.runTerraformApply', 'true'))
   jobs:
     - job: 'terraformExecution'
       pool:
@@ -42,5 +42,5 @@ stages:
           terraform init
         displayName: Terraform Init
       - bash: |
-          terraform plan
-        displayName: Terraform Plan
+          terraform apply -auto-approve
+        displayName: Terraform Apply
