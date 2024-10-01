@@ -6,8 +6,11 @@
 trigger:
 - main
 
-variables:
-  runTerraformApply: false  # Default value (false)
+parameters:
+  - name: runTerraformApply
+    displayName: "Run Terraform Apply"
+    type: boolean
+    default: false
 
 stages:
 - stage: "TerraformPlan"
@@ -29,7 +32,7 @@ stages:
 - stage: "TerraformApply"
   displayName: Terraform Apply
   dependsOn: TerraformPlan
-  condition: and(succeeded(), eq(variables['runTerraformApply'], 'true'))
+  condition: and(succeeded(), eq(variables['parameters.runTerraformApply'], 'true'))
   jobs:
     - job: 'terraformExecution'
       pool:
