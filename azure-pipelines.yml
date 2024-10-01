@@ -32,7 +32,7 @@ stages:
 - stage: "TerraformApply"
   displayName: Terraform Apply
   dependsOn: TerraformPlan
-  condition: and(succeeded(), eq('parameters.runTerraformApply', 'true'))
+  condition: and(succeeded(), eq('${{ parameters.runTerraformApply }}', true))
   jobs:
     - job: 'terraformExecution'
       pool:
