@@ -8,7 +8,7 @@ trigger:
 
 stages:
 - stage: "TerraformPlan"
-  displayName: plan
+  displayName: Terraform Plan
   jobs:
     - job: 'terraformExecution'
       pool:
@@ -24,7 +24,8 @@ stages:
           terraform plan
         displayName: Terraform Plan
 - stage: "TerraformApply"
-  dependsOn: plan
+  displayName: Terraform Apply
+  dependsOn: TerraformPlan
   jobs:
     - job: 'terraformExecution'
       pool:
