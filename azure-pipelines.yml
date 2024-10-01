@@ -6,13 +6,6 @@
 trigger:
 - main
 
-parameters:
-- name: apply
-  displayName: "Terraform Apply"
-  type: bool
-  default: false
-
-
 jobs:
   - job: 'terraformExecution'
     pool:
